@@ -1,0 +1,11 @@
+{
+  "name": "FYT",
+  "main": "app.js",
+  "dependencies": {
+    "ejs": "^1.0.0",
+    "express": "^4.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
