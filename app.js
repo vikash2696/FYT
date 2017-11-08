@@ -1,11 +1,14 @@
-// server.js
+// app.js
 // load the things we need
+
 var express = require('express');
-var app = express();
+var app = module.exports = express();
 
+var db = require('./connection');
+var appController = require('./controller/appController');
 // set the view engine to ejs
-app.set('view engine', 'ejs');
-
+// app.set('view engine', 'ejs');
+// app.set('view options', { layout:'pages/layout.ejs' });
 // use res.render to load up an ejs view file
 
 // index page 
@@ -21,9 +24,18 @@ app.get('/', function(req, res) {
 // });
 
 // about page 
-app.get('/about', function(req, res) {
-    res.render('pages/about');
-});
+// app.get('/about', function(req, res) {
+//     res.render('pages/about');
+// });
 
-app.listen(8080);
-console.log('8080 is the magic port');
+// Connect to Mongo on start
+db.connect('mongodb://localhost:27017/mydatabase', function(err) {
+  if (err) {
+    console.log('Unable to connect to Mongo.')
+    process.exit(1)
+  } else {
+    app.listen(8080, function() {
+      console.log('Listening on port 8080...')
+    })
+  }
+});
