@@ -7,7 +7,7 @@ var app = module.exports = express();
 var db = require('./connection');
 var appController = require('./controller/appController');
 // set the view engine to ejs
-// app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 // app.set('view options', { layout:'pages/layout.ejs' });
 // use res.render to load up an ejs view file
 
@@ -19,17 +19,15 @@ app.get('/', function(req, res) {
 	});
 });
 
-// app.get('/', function(req, res) {
-//     res.render('pages/index');
-// });
+app.get('/', appController.addAsPlayer);
 
 // about page 
-// app.get('/about', function(req, res) {
-//     res.render('pages/about');
-// });
+app.get('/about', function(req, res) {
+    res.render('pages/about');
+});
 
 // Connect to Mongo on start
-db.connect('mongodb://localhost:27017/mydatabase', function(err) {
+db.connect('mongodb://localhost:27017/connect', function(err) {
   if (err) {
     console.log('Unable to connect to Mongo.')
     process.exit(1)
