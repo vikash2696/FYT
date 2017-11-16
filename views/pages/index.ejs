@@ -12,9 +12,23 @@
 </header>
 
 <main>
-    <div class="jumbotron">
+
+    <div class="jumbotron" id="jumbotron">
         <h1>ABC</h1>
+       
     </div>
+    <div id = "login_form">
+
+	<form enctype="multipart/form-data" id = "form_id" method = 'post' action='/admin'>
+
+		<p>Email Id<input name = "email" id = "email" class = "button_class" type = "text" ></p>
+		<p>Password<input name = "password" id = "password" class = "button_class" type = "password"></p>
+		<input class = "button_class" id="login_save" type = "submit" value  = "Login">
+		<input class ="cancel" type = "button" value  = "Cancel" data-dismiss="modal">
+
+
+	</form>
+	</div>
 </main>
 
 <footer>

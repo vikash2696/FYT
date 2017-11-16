@@ -8,8 +8,8 @@ var db = require('./connection');
 var appController = require('./controller/appController');
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-// app.set('view options', { layout:'pages/layout.ejs' });
-// use res.render to load up an ejs view file
+app.use(express.static(__dirname + '/public'));
+// app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
 
 // index page 
 app.get('/', function(req, res) {
@@ -22,9 +22,7 @@ app.get('/', function(req, res) {
 app.get('/', appController.addAsPlayer);
 
 // about page 
-app.get('/about', function(req, res) {
-    res.render('pages/about');
-});
+app.get('/login', appController.login);
 
 // Connect to Mongo on start
 db.connect('mongodb://localhost:27017/connect', function(err) {
